@@ -6,7 +6,7 @@ before_install:
 - docker build -t rflrubix/complex-test -f ./client/Dockerfile.dev ./client 
 
 scripts:
-  - docker run rflrubix/complex-test npm test --coverage
+  - docker run -e CI=true rflrubix/complex-test npm run test
 
 after_success:
   - docker build -t rflrubix/multi-client ./client 
