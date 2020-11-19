@@ -26,7 +26,7 @@
         "name": "nginx",
         "image": "rflfrubix/multi-nginx",
         "essential": true, 
-        "portsMappings": [ 
+        "portMappings": [ 
             {
                 "hostPost": 80,
                 "containerPort": 80
@@ -34,9 +34,6 @@
         ],
         "links": ["client", "server"],
         "memory": 128
-
-
         }
-        
     ]
 }
