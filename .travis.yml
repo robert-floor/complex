@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+- docker build -t rflrubix/complex-test -f ./client/Dockerfile.dev ./client 
+
+scripts:
+  - docker run rflrubix/complex-test npm test --coverage
+
+after_success:
+  - docker build -t rflrubix/multi-client ./client 
+  - docker build -t rflrubix/multi-nginx ./nginx 
+  - docker build -t rflrubix/multi-server ./server 
+  - docker build -t rflrubix/multi-worker ./worker 
+#Login to the docker CLI
+-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" -password-stdin
+
+#Take those images push them to docker-hub
+- docker push rflrubix/multi-client
+- docker push rflrubix/multi-nginx
+- docker push rflrubix/multi-server
+- docker push rflrubix/multi-worker
