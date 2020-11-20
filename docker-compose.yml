@@ -23,7 +23,7 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    environment: 
+    environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres
@@ -46,11 +46,6 @@ services:
     volumes:
       - /app/node_modules
       - ./worker:/app
-    environment: 
+    environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-  
-
-
-
-

@@ -7,7 +7,7 @@
            "hostname": "client",
            "essential": false,
            "memory": 128
-       } , 
+       },
        {
         "name": "server",
         "image": "rflfrubix/multi-server",
@@ -21,13 +21,13 @@
         "hostname": "worker",
         "essential": false,
         "memory": 128
-        }, 
+        },
         {
         "name": "nginx",
         "image": "rflfrubix/multi-nginx",
         "hostname": "nginx",
-        "essential": true, 
-        "portMappings": [ 
+        "essential": true,
+        "portMappings": [
             {
                 "hostPort": 80,
                 "containerPort": 80
