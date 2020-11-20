@@ -11,17 +11,17 @@ script:
   - docker run -e CI=true rflfrubix/react-test npm test
 
 after_success:
-  - docker build -t rflfrubix/multi-client ./client 
-  - docker build -t rflfrubix/multi-nginx ./nginx 
-  - docker build -t rflfrubix/multi-server ./server 
-  - docker build -t rflfrubix/multi-worker ./worker 
+  - docker build -t rflfrubix/multi-client-10-14 ./client
+  - docker build -t rflfrubix/multi-nginx-10-14 ./nginx
+  - docker build -t rflfrubix/multi-server-10-14 ./server
+  - docker build -t rflfrubix/multi-worker-10-14 ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push rflfrubix/multi-client
-  - docker push rflfrubix/multi-nginx
-  - docker push rflfrubix/multi-server
-  - docker push rflfrubix/multi-worker
+  - docker push rflfrubix/multi-client-10-14
+  - docker push rflfrubix/multi-nginx-10-14
+  - docker push rflfrubix/multi-server-10-14
+  - docker push rflfrubix/multi-worker-10-14
 
 deploy:
   provider: elasticbeanstalk
